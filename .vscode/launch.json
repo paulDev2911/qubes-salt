@@ -1,0 +1,57 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Salt Module",
+            "type": "python",
+            "request": "launch",
+            "program": "/usr/bin/salt-call",
+            "args": [
+                "--local",
+                "--log-level=debug",
+                "state.apply",
+                "${input:stateName}",
+                "test=True"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "/srv/salt/_modules:/srv/salt/_states:/srv/salt/_grains:/srv/salt/_pillar"
+            }
+        },
+        {
+            "name": "Debug Python Salt Module",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "/usr/lib/python3/dist-packages:/srv/salt/_modules:/srv/salt/_states:/srv/salt/_grains:/srv/salt/_pillar"
+            }
+        },
+        {
+            "name": "Debug Qubes Salt",
+            "type": "python",
+            "request": "launch",
+            "program": "/usr/bin/qubesctl",
+            "args": [
+                "--show-output",
+                "state.apply",
+                "${input:stateName}",
+                "test=True"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "sudo": true
+        }
+    ],
+    "inputs": [
+        {
+            "id": "stateName",
+            "description": "Enter the Salt state name",
+            "default": "",
+            "type": "promptString"
+        }
+    ]
+}

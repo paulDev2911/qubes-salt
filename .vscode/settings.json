@@ -1,0 +1,122 @@
+{
+    // Salt-spezifische Einstellungen - WICHTIG: Auch in User Settings kopieren!
+    "files.associations": {
+        "*.sls": "yaml",
+        "*.jinja": "jinja",
+        "*.j2": "jinja",
+        "*.pillar": "yaml",
+        "*.top": "yaml",
+        "Saltfile": "yaml",
+        "*.conf": "yaml"
+    },
+    // YAML Konfiguration für Salt States
+    "yaml.format.enable": true,
+    "yaml.format.singleQuote": false,
+    "yaml.format.bracketSpacing": true,
+    "yaml.validate": true,
+    "yaml.completion": true,
+    "yaml.hover": true,
+    "yaml.format.printWidth": 120,
+    "yaml.customTags": [
+        "!include",
+        "!import_yaml",
+        "!import_json",
+        "!import_text"
+    ],
+    // Jinja Template Einstellungen
+    "jinja.enable": true,
+    "emmet.includeLanguages": {
+        "jinja": "html"
+    },
+    // Python Einstellungen für Salt Module
+    "python.defaultInterpreterPath": "/usr/bin/python3",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "88"
+    ],
+    "python.sortImports.args": [
+        "--profile",
+        "black"
+    ],
+    // Qubes-spezifische Pfade
+    "python.analysis.extraPaths": [
+        "/usr/lib/python3/dist-packages/qubes",
+        "/usr/lib/python3/dist-packages/qubesadmin",
+        "/srv/salt/_modules",
+        "/srv/salt/_states",
+        "/srv/salt/_grains",
+        "/srv/salt/_pillar"
+    ],
+    // Editor Einstellungen
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.trimAutoWhitespace": true,
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 120,
+    // Dateien und Ordner
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.pyc": true,
+        "**/__pycache__": true,
+        "**/venv": true,
+        "**/.venv": true,
+        "**/node_modules": true
+    },
+    // Salt-spezifische Workspace-Einstellungen
+    "search.exclude": {
+        "**/venv": true,
+        "**/.venv": true,
+        "**/node_modules": true,
+        "**/*.pyc": true,
+        "**/__pycache__": true,
+        "**/cache": true,
+        "**/logs": true
+    },
+    // Git Integration
+    "git.ignoreLimitWarning": true,
+    "git.autofetch": true,
+    // Terminal Einstellungen für Qubes
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "/bin/bash",
+            "args": []
+        },
+        "salt-call": {
+            "path": "/bin/bash",
+            "args": [
+                "-c",
+                "cd ${workspaceFolder} && bash"
+            ]
+        }
+    },
+    // Sprach-Server Einstellungen
+    "redhat.telemetry.enabled": false,
+    // Intellisense und Autocomplete
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": true
+    },
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    // Debugging
+    "debug.console.fontSize": 12,
+    "debug.console.fontFamily": "Monaco, 'Courier New', monospace"
+}

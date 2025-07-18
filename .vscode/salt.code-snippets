@@ -1,0 +1,147 @@
+{
+    "Salt State Basic": {
+        "scope": "yaml",
+        "prefix": "salt-state",
+        "body": [
+            "${1:state_name}:",
+            "  ${2:module.function}:",
+            "    - name: ${3:target}",
+            "    - ${4:parameter}: ${5:value}",
+            "    - require:",
+            "      - ${6:dependency}: ${7:dependency_name}"
+        ],
+        "description": "Basic Salt state template"
+    },
+    "Salt Package Install": {
+        "scope": "yaml",
+        "prefix": "salt-pkg",
+        "body": [
+            "${1:package_name}:",
+            "  pkg.installed:",
+            "    - name: ${1:package_name}",
+            "    - version: ${2:latest}"
+        ],
+        "description": "Install package via Salt"
+    },
+    "Salt Service": {
+        "scope": "yaml",
+        "prefix": "salt-service",
+        "body": [
+            "${1:service_name}:",
+            "  service.running:",
+            "    - name: ${1:service_name}",
+            "    - enable: True",
+            "    - reload: True",
+            "    - watch:",
+            "      - file: ${2:config_file}"
+        ],
+        "description": "Salt service state"
+    },
+    "Salt File Managed": {
+        "scope": "yaml",
+        "prefix": "salt-file",
+        "body": [
+            "${1:file_path}:",
+            "  file.managed:",
+            "    - name: ${1:file_path}",
+            "    - source: salt://${2:source_path}",
+            "    - template: jinja",
+            "    - user: ${3:root}",
+            "    - group: ${4:root}",
+            "    - mode: ${5:644}",
+            "    - makedirs: True"
+        ],
+        "description": "Salt managed file"
+    },
+    "Salt Command Run": {
+        "scope": "yaml",
+        "prefix": "salt-cmd",
+        "body": [
+            "${1:command_name}:",
+            "  cmd.run:",
+            "    - name: ${2:command}",
+            "    - unless: ${3:condition}",
+            "    - user: ${4:root}",
+            "    - cwd: ${5:/tmp}"
+        ],
+        "description": "Salt command execution"
+    },
+    "Qubes VM State": {
+        "scope": "yaml",
+        "prefix": "qubes-vm",
+        "body": [
+            "${1:vm_name}:",
+            "  qvm.present:",
+            "    - name: ${1:vm_name}",
+            "    - template: ${2:template_name}",
+            "    - label: ${3:red}",
+            "    - mem: ${4:2048}",
+            "    - vcpus: ${5:2}",
+            "    - flags:",
+            "      - ${6:flag}"
+        ],
+        "description": "Qubes VM state"
+    },
+    "Qubes VM Clone": {
+        "scope": "yaml",
+        "prefix": "qubes-clone",
+        "body": [
+            "${1:new_vm_name}:",
+            "  qvm.clone:",
+            "    - name: ${1:new_vm_name}",
+            "    - source: ${2:source_vm}",
+            "    - pool: ${3:default}"
+        ],
+        "description": "Clone Qubes VM"
+    },
+    "Salt Pillar": {
+        "scope": "yaml",
+        "prefix": "salt-pillar",
+        "body": [
+            "${1:pillar_key}: {{ pillar['${1:pillar_key}'] }}",
+            "${2:another_key}: {{ pillar.get('${2:another_key}', '${3:default_value}') }}"
+        ],
+        "description": "Salt pillar reference"
+    },
+    "Salt Grain": {
+        "scope": "yaml",
+        "prefix": "salt-grain",
+        "body": [
+            "${1:grain_key}: {{ grains['${1:grain_key}'] }}",
+            "${2:another_key}: {{ grains.get('${2:another_key}', '${3:default_value}') }}"
+        ],
+        "description": "Salt grain reference"
+    },
+    "Salt Jinja If": {
+        "scope": "yaml",
+        "prefix": "salt-if",
+        "body": [
+            "{% if ${1:condition} %}",
+            "${2:content}",
+            "{% endif %}"
+        ],
+        "description": "Jinja if statement"
+    },
+    "Salt Jinja For": {
+        "scope": "yaml",
+        "prefix": "salt-for",
+        "body": [
+            "{% for ${1:item} in ${2:list} %}",
+            "${3:content}",
+            "{% endfor %}"
+        ],
+        "description": "Jinja for loop"
+    },
+    "Salt Top File": {
+        "scope": "yaml",
+        "prefix": "salt-top",
+        "body": [
+            "base:",
+            "  '${1:target}':",
+            "    - ${2:state_name}",
+            "  '${3:another_target}':",
+            "    - ${4:another_state}"
+        ],
+        "description": "Salt top file structure"
+    }
+}

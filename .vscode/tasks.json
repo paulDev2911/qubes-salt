@@ -1,0 +1,143 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Salt: Test State",
+            "type": "shell",
+            "command": "sudo salt-call --local state.apply ${input:stateName} test=True",
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Salt: Apply State",
+            "type": "shell",
+            "command": "sudo salt-call --local state.apply ${input:stateName}",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Salt: Highstate Test",
+            "type": "shell",
+            "command": "sudo salt-call --local state.highstate test=True",
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Salt: Highstate Apply",
+            "type": "shell",
+            "command": "sudo salt-call --local state.highstate",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Salt: Validate Syntax",
+            "type": "shell",
+            "command": "python3 -c \"import yaml; yaml.safe_load(open('${file}'))\"",
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Salt: List Grains",
+            "type": "shell",
+            "command": "sudo salt-call --local grains.items",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Salt: List Pillar",
+            "type": "shell",
+            "command": "sudo salt-call --local pillar.items",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Qubes: List VMs",
+            "type": "shell",
+            "command": "qvm-ls --all",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Qubes: Salt Dom0 Test",
+            "type": "shell",
+            "command": "sudo qubesctl state.apply ${input:stateName} test=True",
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Qubes: Salt Dom0 Apply",
+            "type": "shell",
+            "command": "sudo qubesctl state.apply ${input:stateName}",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "stateName",
+            "description": "Enter the Salt state name",
+            "default": "",
+            "type": "promptString"
+        }
+    ]
+}

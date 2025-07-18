@@ -1,0 +1,30 @@
+{
+    "recommendations": [
+        // Salt & YAML
+        "redhat.vscode-yaml",
+        "wholroyd.jinja",
+        "samuelcolvin.jinjahtml",
+        "ms-python.python",
+        "ms-python.black-formatter",
+        "ms-python.isort",
+        "ms-python.pylint",
+        "ms-python.mypy-type-checker",
+        // Git & Version Control
+        "eamodio.gitlens",
+        "mhutchie.git-graph",
+        // Utilities
+        "streetsidesoftware.code-spell-checker",
+        "streetsidesoftware.code-spell-checker-german",
+        "editorconfig.editorconfig",
+        "gruntfuggly.todo-tree",
+        "ms-vscode.vscode-json",
+        // Qubes/Security
+        "ms-vscode.hexeditor",
+        "tamasfe.even-better-toml",
+        // Productivity
+        "formulahendry.auto-rename-tag",
+        "christian-kohler.path-intellisense",
+        "ms-vscode.vscode-typescript-next",
+        "ms-vscode-remote.remote-ssh"
+    ]
+}
