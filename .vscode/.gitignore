@@ -1,0 +1,43 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.pytest_cache/
+
+# Salt
+*.log
+.salt/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json.bak
+*.tmp
+*.bak
+
+# Build artifacts
+build/
+dist/
+*.spec.bak
+rpm_spec/*.tar.gz
+
+# Qubes specific
+*.qimg
+*.qubes-backup
+
+# Development
+.env
+.venv/
+venv/
+
+# Temporary files
+*.orig
+*.rej
