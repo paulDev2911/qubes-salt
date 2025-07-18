@@ -1,0 +1,51 @@
+# -*- coding: utf-8 -*-
+# vim: set syntax=yaml ts=2 sw=2 sts=2 et :
+
+# Formula Identification
+package-name: qubes-mgmt-salt-personal
+name: personal-qubes-mgmt
+version: 0.1.0
+release: 1
+
+# Formula Metadata
+summary: Personal Qubes Management Formula
+description: |
+  Salt formula for automated Qubes VM management and configuration.
+  Provides states for creating and configuring personal, development,
+  and work VMs with proper templates and networking.
+
+# Author & Distribution
+vendor: Personal
+url: https://github.com/paulDev2911/qubes-salt
+license: MIT
+
+# Target System
+os: dom0
+os_family: RedHat
+
+# Directory Structure
+top_level_dir: .
+formula_dir: /srv/formulas/personal
+states_dir: /srv/salt
+pillar_dir: /srv/pillar
+
+# Files to Install
+formula-files: README.md LICENSE
+state-files: qvm/init.sls
+pillar-files: pillar/qvm/init.sls
+
+# Salt Environment
+saltenv: base
+
+# Formula Dependencies (will be added later when we know what we need)
+requires: []
+
+# Configuration Defaults
+config:
+  template_default: fedora-41
+  memory_default: 2048
+
+# Available States (will grow as we add more)
+states:
+  qvm:
+    - qvm.personal
