@@ -7,11 +7,9 @@
 ##
 
 templates:
-  # Fedora 41 Personal Template
   fedora-41-personal:
-    base_template: fedora-41  # Clone from this template
+    base_template: fedora-41
     packages:
-      # Essential tools
       essential:
         - vim
         - git
@@ -21,7 +19,6 @@ templates:
         - tree
         - unzip
         
-      # Personal applications
       personal:
         - firefox
         - thunderbird
@@ -29,27 +26,40 @@ templates:
         - vlc
         - gimp
         
-      # Development basics (for personal projects)
-      development:
-        - python3
-        - python3-pip
-        - nodejs
-        - npm
-        
-      # System utilities
-      system:
-        - keepassxc
-        - file-roller
-        - gnome-calculator
-        
-    # Services to enable/disable
     services:
       enable:
         - NetworkManager
       disable:
-        - cups  # Disable printing by default
-        
-    # Additional repositories (optional)
-    repositories:
-      rpmfusion: true
-      flathub: false
+        - cups
+
+  fedora-41-development:
+    base_template: fedora-41
+    packages:
+      essential:
+        - vim
+        - git
+        - curl
+        - wget
+        - htop
+        - tree
+        - unzip
+        - which
+        - make
+      development:
+        - python3
+        - python3-pip
+        - python3-devel
+        - npm
+      ides:
+        - code
+        - vim-enhanced
+        - nano
+      containers:
+        - docker
+        - docker-compose
+      services:
+        enable:
+          - NetworkManager
+          - docker
+        disable:
+          - cups

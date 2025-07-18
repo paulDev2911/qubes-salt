@@ -8,7 +8,4 @@
 
 include:
   - templates.fedora-41-personal
-
-# Future templates can be added here:
-# - templates.fedora-41-development
-# - templates.debian-12-work
+  - templates.fedora-41-development
